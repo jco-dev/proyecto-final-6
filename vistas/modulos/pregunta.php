@@ -20,6 +20,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card">
+
                         <form method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
@@ -50,7 +51,13 @@
                                 </button>
                             </div>
 
+                            <?php
+                            $pregunta = new Pregunta();
+                            $pregunta->guardarPregunta();
+                            ?>
+
                         </form>
+
                     </div>
                 </div>
 

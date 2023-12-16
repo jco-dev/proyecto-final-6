@@ -35,7 +35,7 @@
 
 
             <div class="image">
-                <img src="vistas/dist/images/user.png" class="img-circle" width="30" alt="Imagen de usuario">
+                <img src="<?= BASE_URL ?>vistas/dist/images/user.png" class="img-circle" width="30" alt="Imagen de usuario">
             </div>
             Carlos Perez
             <a href="salir" class="btn btn-outline-danger ml-1 btn-sm">
