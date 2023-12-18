@@ -42,7 +42,7 @@ var_dump($respuestas);
                                         <p>
                                             <?= $pregunta['descripcion'] ?>
                                         </p>
-                                        <img class="img-fluid pad" src="<?= BASE_URL . $pregunta['foto'] ?>" alt="Photo">
+                                        <img class="img-fluid pad" src="<?= $_ENV['BASE_URL'] . $pregunta['foto'] ?>" alt="Photo">
                                     </div>
 
                                     <!-- Respuestas -->

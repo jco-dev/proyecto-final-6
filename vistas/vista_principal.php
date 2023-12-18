@@ -23,12 +23,12 @@ if ($ruta == 'login' || $ruta == 'registro')
     <title>Consultas | Posgrado</title>
     <!-- CSS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
-    <link rel="stylesheet" href="<?= BASE_URL?>vistas/plugins/fontawesome-free/css/all.min.css" />
-    <link rel="stylesheet" href="<?= BASE_URL?>vistas/dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="<?= $_ENV['BASE_URL'] ?>vistas/plugins/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="<?= $_ENV['BASE_URL'] ?>vistas/dist/css/adminlte.min.css" />
     <!-- SCRIPTS    -->
-    <script src="<?= BASE_URL?>vistas/plugins/jquery/jquery.min.js"></script>
-    <script src="<?= BASE_URL?>vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= BASE_URL?>vistas/dist/js/adminlte.min.js"></script>
+    <script src="<?= $_ENV['BASE_URL'] ?>vistas/plugins/jquery/jquery.min.js"></script>
+    <script src="<?= $_ENV['BASE_URL'] ?>vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= $_ENV['BASE_URL'] ?>vistas/dist/js/adminlte.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>

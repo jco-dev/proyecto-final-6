@@ -33,7 +33,7 @@ $preguntas = Pregunta::listarPreguntas('pregunta', NULL, NULL);
                                             <div class="user-block">
                                                 <img class="img-circle img-bordered-sm" src="vistas/dist/images/user.png" alt="Imagen de usuario">
                                                 <span class="username">
-                                                    <a href="<?= BASE_URL?>respuesta/<?= $pregunta['id_pregunta'] ?>"><?= $pregunta['titulo'] ?></a>
+                                                    <a href="<?= $_ENV['BASE_URL'] ?>respuesta/<?= $pregunta['id_pregunta'] ?>"><?= $pregunta['titulo'] ?></a>
                                                     <p> <?= $pregunta['usuario']?> </p>
                                                 </span>
                                                 <span class="description">Compartido públicamente - <?= $pregunta['creado_el'] ?></span>
@@ -54,11 +54,11 @@ $preguntas = Pregunta::listarPreguntas('pregunta', NULL, NULL);
                     <div class="card">
                         <div class="card-body">
 
-                            <a class="btn btn-primary btn-block" href="<?= BASE_URL ?>pregunta">
+                            <a class="btn btn-primary btn-block" href="<?= $_ENV['BASE_URL'] ?>pregunta">
                                 Preguntar
                             </a>
 
-                            <a class="btn btn-primary btn-block" href="<?= BASE_URL ?>login">
+                            <a class="btn btn-primary btn-block" href="<?= $_ENV['BASE_URL'] ?>login">
                                 Regístrese o inicie sesión para preguntar
                             </a>
 
