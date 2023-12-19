@@ -15,15 +15,16 @@ class RespuestaModel
         return $stmt->fetchAll();
     }
 
-    // static public function guardarPregunta($tabla, $datos)
-    // {
-    //     $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (titulo, descripcion, foto, id_usuario) VALUES (:titulo, :descripcion, :foto, :id_usuario)");
+    static public function guardarRespuesta($tabla, $datos)
+    {
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (descripcion, foto, id_usuario, id_pregunta) 
+                                                VALUES (:descripcion, :foto, :id_usuario, :id_pregunta)");
 
-    //     $stmt->bindParam(":titulo", $datos['titulo'], PDO::PARAM_STR);
-    //     $stmt->bindParam(":descripcion", $datos['descripcion'], PDO::PARAM_STR);
-    //     $stmt->bindParam(":foto", $datos['foto'], PDO::PARAM_STR);
-    //     $stmt->bindParam(":id_usuario", $datos['id_usuario'], PDO::PARAM_INT);
+        $stmt->bindParam(":descripcion", $datos['descripcion'], PDO::PARAM_STR);
+        $stmt->bindParam(":foto", $datos['foto'], PDO::PARAM_STR);
+        $stmt->bindParam(":id_usuario", $datos['id_usuario'], PDO::PARAM_INT);
+        $stmt->bindParam(":id_pregunta", $datos['id_pregunta'], PDO::PARAM_INT);
 
-    //     return $stmt->execute();
-    // }
+        return $stmt->execute();
+    }
 }

@@ -22,7 +22,7 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" src="vistas/dist/images/user.png" alt="User profile picture">
+                            <img class="profile-user-img img-fluid img-circle" src="<?= $_ENV['BASE_URL'] ?>vistas/dist/images/user.png" alt="User profile picture">
                         </div>
 
                         <h3 class="profile-username text-center"> Inicie Sesion</h3>
@@ -58,7 +58,7 @@
 
                         <div class="post">
                             <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="vistas/dist/images/user.png" alt="user image">
+                                <img class="img-circle img-bordered-sm" src="<?= $_ENV['BASE_URL'] ?>vistas/dist/images/user.png" alt="user image">
                                 <span class="username">
                                     <a href="respuesta/"></a>
                                 </span>

@@ -9,56 +9,68 @@ class Respuesta
         return $respuesta;
     }
 
-    // static public function guardarPregunta()
-    // {
-    //     if (isset($_POST['titulo']) && isset($_POST['descripcion'])) {
-    //         $titulo = trim($_POST['titulo']);
-    //         $descripcion = trim($_POST['descripcion']);
+    static public function guardarRespuesta()
+    {
+        // var_dump($_POST);
+        // exit;
+        if (isset($_POST['descripcion'])) {
 
-    //         if (self::validarEntrada($titulo) && self::validarEntrada($descripcion) && self::validarImagen($_FILES['foto']['type'])) {
+            $descripcion = trim($_POST['descripcion']);
 
-    //             $directorio = "vistas/upload/pregunta/";
-    //             $archivo = $directorio . time() . '.' . pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+            if (self::validarEntrada($descripcion)) {
 
-    //             if (move_uploaded_file($_FILES['foto']['tmp_name'], $archivo)) {
-    //                 $datos = [
-    //                     'titulo' => $titulo,
-    //                     'descripcion' => $descripcion,
-    //                     'foto'        => $archivo,
-    //                     'id_usuario'  => 1
-    //                 ];
+                // && 
+                $ruta = NULL;
 
-    //                 $respuesta = PreguntaModel::guardarPregunta("pregunta", $datos);
+                if (isset($_FILES['foto']['name']) && $_FILES['foto']['name'] != "") {
+                    $directorio = "vistas/upload/respuesta/";
+                    $ruta = $directorio . time() . '.' . pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+                    move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
+                }
 
-    //                 if ($respuesta) {
-    //                     echo "<script>
-    //                         let text = 'Pregunta guardada correctamente';
-    //                         if(confirm(text)){
-    //                             window.location = 'preguntas';
-    //                         }
-    //                     </script>";
-    //                 } else {
-    //                     echo "<script>
-    //                         alert('Error al guardar la pregunta');
-    //                     </script>";
-    //                 }
-    //             }
-    //         } else {
-    //             echo "<script>
-    //                 alert('El campo título y la descripción no deben llevar caracteres especiales.');
-    //             </script>";
-    //         }
-    //     }
-    // }
+                $datos = [
+                    'descripcion' => $descripcion,
+                    'foto'        => $ruta,
+                    'id_usuario'  => 1,
+                    'id_pregunta' => $_POST['id_pregunta']
+                ];
+
+                $respuesta = RespuestaModel::guardarRespuesta("respuesta", $datos);
+
+                $ruta = $_ENV['BASE_URL'] . 'respuesta/' . $_POST['id_pregunta'];
+                
+                if ($respuesta) {
+                    echo "<script>
+                            let text = 'Repuesta guardada correctamente';
+                            if(confirm(text)){
+                                window.location = '" . $ruta . "';
+                            }
+                        </script>";
+                } else {
+                    echo "<script>
+                            alert('Error al guardar la respuesta');
+                        </script>";
+                }
+            } else {
+                echo "<script>
+                    alert('El campo descripción no deben llevar caracteres especiales.');
+                </script>";
+            }
+        }
+    }
 
 
-    // static private function validarEntrada($input)
-    // {
-    //     return preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓ¡Ú¿?!,. ]+$/', $input);
-    // }
+    static private function validarEntrada($input)
+    {
+        return preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓ¡Ú¿?!,. ]+$/', $input);
+    }
 
-    // static private function validarImagen($tipo)
-    // {
-    //     return $tipo === 'image/png' || $tipo === 'image/jpeg' || $tipo === 'image/jpg';
-    // }
+    static private function validarImagen($tipo)
+    {
+        if ($tipo != "") {
+            return $tipo === 'image/png' || $tipo === 'image/jpeg' || $tipo === 'image/jpg';
+        } else {
+            return true;
+        }
+    }
 }
