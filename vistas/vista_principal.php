@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $rutas = ['login', 'perfil', 'pregunta', 'preguntas', 'registro', 'respuesta'];
 
 $ruta = 'preguntas';
