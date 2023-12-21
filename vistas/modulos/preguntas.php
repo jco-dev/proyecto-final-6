@@ -34,7 +34,7 @@ $preguntas = Pregunta::listarPreguntas('pregunta', NULL, NULL);
                                                 <img class="img-circle img-bordered-sm" src="<?= $_ENV['BASE_URL'] ?>vistas/dist/images/user.png" alt="Imagen de usuario">
                                                 <span class="username">
                                                     <a href="<?= $_ENV['BASE_URL'] ?>respuesta/<?= $pregunta['id_pregunta'] ?>"><?= $pregunta['titulo'] ?></a>
-                                                    <p> <?= $pregunta['usuario']?> </p>
+                                                    <p> <?= $pregunta['usuario'] ?> </p>
                                                 </span>
                                                 <span class="description">Compartido públicamente - <?= $pregunta['creado_el'] ?></span>
                                             </div>
@@ -53,14 +53,16 @@ $preguntas = Pregunta::listarPreguntas('pregunta', NULL, NULL);
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-body">
+                            <?php if (isset($_SESSION['id'])) : ?>
+                                <a class="btn btn-primary btn-block" href="<?= $_ENV['BASE_URL'] ?>pregunta">
+                                    Preguntar
+                                </a>
+                            <?php else : ?>
 
-                            <a class="btn btn-primary btn-block" href="<?= $_ENV['BASE_URL'] ?>pregunta">
-                                Preguntar
-                            </a>
-
-                            <a class="btn btn-primary btn-block" href="<?= $_ENV['BASE_URL'] ?>login">
-                                Regístrese o inicie sesión para preguntar
-                            </a>
+                                <a class="btn btn-primary btn-block" href="<?= $_ENV['BASE_URL'] ?>login">
+                                    Regístrese o inicie sesión para preguntar
+                                </a>
+                            <?php endif; ?>
 
                         </div>
                     </div>

@@ -25,7 +25,7 @@ class Pregunta
                         'titulo' => $titulo,
                         'descripcion' => $descripcion,
                         'foto'        => $archivo,
-                        'id_usuario'  => 1
+                        'id_usuario'  => $_SESSION['id']
                     ];
 
                     $respuesta = PreguntaModel::guardarPregunta("pregunta", $datos);
@@ -60,5 +60,11 @@ class Pregunta
     static private function validarImagen($tipo)
     {
         return $tipo === 'image/png' || $tipo === 'image/jpeg' || $tipo === 'image/jpg';
+    }
+
+    static public function listarPreguntasUsuario()
+    {
+        $preguntas = PreguntaModel::listarPreguntasUsuario('pregunta', 'id_usuario', $_SESSION['id']);
+        return $preguntas;
     }
 }

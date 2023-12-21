@@ -56,10 +56,29 @@ class Usuario
         $_SESSION['nombre'] = $persona['nombre'];
         $_SESSION['paterno'] = $persona['paterno'];
         $_SESSION['materno'] = $persona['materno'];
+        $_SESSION['correo'] = $persona['usuario'];
         $_SESSION['rol'] = $persona['rol'];
 
         echo '<script>
                 window.location = "' . $_ENV['BASE_URL'] . '";
             </script>';
+    }
+
+    static public function loginUsuario()
+    {
+        if (isset($_POST['usuario']) && isset($_POST['clave'])) {
+            $usuario = UsuarioModel::obtenerPersonaPorUsuario($_POST['usuario']);
+            if ($usuario) {
+                if (password_verify($_POST['clave'], $usuario['clave']))
+                    self::iniciarSesion($usuario);
+                else
+                    echo '<div class="alert alert-danger mt-2" role="alert">
+                        Contraseña incorrecta
+                    </div>';
+            } else
+                echo '<div class="alert alert-danger mt-2" role="alert">
+                    Contraseña incorrecta
+                </div>';
+        }
     }
 }

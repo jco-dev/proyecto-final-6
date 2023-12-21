@@ -2,7 +2,7 @@
 
 session_start();
 
-$rutas = ['login', 'perfil', 'pregunta', 'preguntas', 'registro', 'respuesta'];
+$rutas = ['login', 'perfil', 'pregunta', 'preguntas', 'registro', 'respuesta', 'salir', 'usuarios'];
 
 $ruta = 'preguntas';
 if(isset($_GET['ruta'])){
