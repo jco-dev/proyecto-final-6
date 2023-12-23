@@ -13,14 +13,19 @@
                 <li class="nav-item">
                     <a href="/" class="nav-link">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= $_ENV['BASE_URL'] ?>perfil" class="nav-link">Perfil</a>
-                </li>
+
+                <?php if (isset($_SESSION['id'])) : ?>
+                    <li class="nav-item">
+                        <a href="<?= $_ENV['BASE_URL'] ?>perfil" class="nav-link">Perfil</a>
+                    </li>
+                <?php endif; ?>
 
 
-                <li class="nav-item">
-                    <a href="<?= $_ENV['BASE_URL'] ?>usuarios" class="nav-link">Usuarios</a>
-                </li>
+                <?php if (isset($_SESSION['id']) && $_SESSION['rol'] == "ADMIN") : ?>
+                    <li class="nav-item">
+                        <a href="<?= $_ENV['BASE_URL'] ?>usuarios" class="nav-link">Usuarios</a>
+                    </li>
+                <?php endif; ?>
             </ul>
 
         </div>
